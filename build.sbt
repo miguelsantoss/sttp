@@ -124,7 +124,7 @@ val jsoniterVersion = "2.21.3"
 
 val playJsonVersion: Option[(Long, Long)] => String = {
   case Some((2, 11)) => "2.7.4"
-  case _             => "2.9.2"
+  case _             => "2.10.0-RC7"
 }
 val catsEffect_3_version = "3.4.8"
 val fs2_3_version = "3.6.1"
@@ -884,10 +884,10 @@ lazy val playJson = (projectMatrix in file("json/play-json"))
     scalaTest
   )
   .jvmPlatform(
-    scalaVersions = scala2,
+    scalaVersions = scala2 ++ scala3,
     settings = commonJvmSettings
   )
-  .jsPlatform(scalaVersions = scala2, settings = commonJsSettings)
+  .jsPlatform(scalaVersions = scala2 ++ scala3, settings = commonJsSettings)
   .dependsOn(core, jsonCommon)
 
 lazy val prometheusBackend = (projectMatrix in file("observability/prometheus-backend"))
